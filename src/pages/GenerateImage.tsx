@@ -8,7 +8,7 @@ export default function GenerateImage() {
 
     const [prompt, setPrompt] = useState("")
     const [imgUrl, setImgUrl] = useState<any>()
-    const [display, setDisplay] = useState(false)
+   // const [display, setDisplay] = useState(false)
 
     const { lastJsonMessage, readyState, lastMessage } = useWebSocket(
         WS_URL,
