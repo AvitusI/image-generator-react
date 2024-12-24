@@ -3,8 +3,8 @@ import useWebSocket, { ReadyState} from "react-use-websocket"
 import axios from "axios"
 
 export default function GenerateImage() {
-    const URL = "http://184.73.52.74"
-    const WS_URL = "ws://184.73.52.74/ws"
+    const URL = "https://img.avytechs.tech"
+    const WS_URL = "wss://img.avytechs.tech/ws"
 
     const [prompt, setPrompt] = useState("")
     const [imgUrl, setImgUrl] = useState<any>()
