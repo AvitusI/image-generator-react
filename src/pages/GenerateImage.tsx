@@ -3,11 +3,14 @@ import useWebSocket, { ReadyState} from "react-use-websocket"
 import axios from "axios"
 
 export default function GenerateImage() {
-    const URL = "https://img.avytechs.tech"
-    const WS_URL = "wss://img.avytechs.tech/ws"
+   // const URL = "https://img.avytechs.tech"
+   // const WS_URL = "wss://img.avytechs.tech/ws"
+    const URL = "http://localhost:8000"
+    const WS_URL = "ws://localhost:8000/ws"
 
     const [prompt, setPrompt] = useState("")
     const [imgUrl, setImgUrl] = useState<any>()
+    const [imgUrls, setImgUrls] = useState<any[]>([])
    // const [display, setDisplay] = useState(false)
 
     const { lastJsonMessage, readyState, lastMessage } = useWebSocket(
@@ -27,6 +30,7 @@ export default function GenerateImage() {
 
     useEffect(() => {
         setImgUrl(lastJsonMessage)
+        setImgUrls([...imgUrls, lastJsonMessage])
         console.log(lastJsonMessage)
         console.log(lastMessage)
     }, [lastJsonMessage, lastMessage])
@@ -56,10 +60,14 @@ export default function GenerateImage() {
             </div>
             <div className="flex items-center justify-center mt-6">
                 { imgUrl && (
-                    <img
-                        src={imgUrl.message}
-                        className="size-96 rounded-lg object-cover" 
-                    />
+                    imgUrls.map((url) => (
+                        <img
+                            src={url?.message}
+                            className="size-96 rounded-lg object-cover" 
+                            key={url?.message}
+                        />
+                    ))
+                    
                 )}
             </div>
         </div>
