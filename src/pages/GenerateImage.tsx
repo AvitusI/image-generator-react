@@ -5,8 +5,8 @@ import axios from "axios"
 export default function GenerateImage() {
    // const URL = "https://img.avytechs.tech"
    // const WS_URL = "wss://img.avytechs.tech/ws"
-    const URL = "http://localhost:8000"
-    const WS_URL = "ws://localhost:8000/ws"
+    const URL = "https://img.avytechs.tech"
+    const WS_URL = "wss://img.avytechs.tech/ws"
 
     const [prompt, setPrompt] = useState("")
     const [imgUrl, setImgUrl] = useState<any>()
@@ -58,7 +58,7 @@ export default function GenerateImage() {
                     </button>
                 </form>
             </div>
-            <div className="flex items-center justify-center mt-6">
+            <div className="grid grid-cols-1 p-6 sm:grid-cols-4">
                 { imgUrl && (
                     imgUrls.map((url) => (
                         <img
